@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 public class UserController {
     @Resource
     private UserService userService;
-    @RequestMapping(value = "/id",produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "/id")
     @ResponseBody
     public String selectUserById(){
         User user = userService.selectUserById(1);
