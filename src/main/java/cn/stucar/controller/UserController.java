@@ -13,15 +13,16 @@ import javax.annotation.Resource;
  * Created by Administrator on 2017/8/3.
  */
 @Controller
-@RequestMapping("/user")
+@RequestMapping(value = "/user", produces="text/html;charset=UTF-8")
+@ResponseBody
 public class UserController {
     @Resource
     private UserService userService;
+    @Resource
+    private Gson gson;
     @RequestMapping(value = "/id")
-    @ResponseBody
     public String selectUserById(){
         User user = userService.selectUserById(1);
-        Gson gson = new Gson();
         return gson.toJson(user,User.class);
     }
 }
