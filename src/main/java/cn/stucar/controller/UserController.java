@@ -15,14 +15,13 @@ import javax.annotation.Resource;
 @Controller
 @RequestMapping(value = "/user", produces="text/html;charset=UTF-8")
 @ResponseBody
-public class UserController {
+public class UserController extends BaseController{
     @Resource
     private UserService userService;
-    @Resource
-    private Gson gson;
+
     @RequestMapping(value = "/id")
     public String selectUserById(){
         User user = userService.selectUserById(1);
-        return gson.toJson(user,User.class);
+        return retContent(200,user);
     }
 }

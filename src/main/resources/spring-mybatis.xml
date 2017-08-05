@@ -37,7 +37,8 @@
         <property name="configLocation" value="classpath:mybatis-config.xml"></property>
     </bean>
     <!-- GSON对象 -->
-    <bean id="Gson" class="com.google.gson.Gson"></bean>
+    <bean id="gson" class="com.google.gson.Gson"></bean>
+
     <bean id="userDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
         <property name="mapperInterface" value="cn.stucar.dao.UserDao"></property>
         <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>

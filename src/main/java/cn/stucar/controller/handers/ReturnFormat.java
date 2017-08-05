@@ -1,18 +1,19 @@
 package cn.stucar.controller.handers;
 
 
-import cn.stucar.dao.OutputJson;
+import cn.stucar.model.OutputJson;
+import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.Map;
 //格式化返回客户端数据格式（json）
 public class ReturnFormat {
     private static Map<String, String> messageMap = new HashMap();
-
+    private static Gson gson = new Gson();
     //初始化状态码与文字说明
     static {
         messageMap.put("0", "");
-
+        messageMap.put("200", "success");
         messageMap.put("400", "Bad Request!");
         messageMap.put("401", "NotAuthorization");
         messageMap.put("405", "Method Not Allowed");
@@ -37,6 +38,10 @@ public class ReturnFormat {
 
     public static String retParam(int status, Object data) {
         OutputJson OutputJson = new OutputJson(status,messageMap.get(String.valueOf(status)),data);
-        return OutputJson.toString();
+        return gson.toJson(OutputJson);
+    }
+    public static String retParam(int status,String message, Object data) {
+        OutputJson OutputJson = new OutputJson(status,message,data);
+        return gson.toJson(OutputJson);
     }
 }
