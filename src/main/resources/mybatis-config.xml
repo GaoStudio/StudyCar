@@ -4,8 +4,8 @@
 <configuration>
     <typeAliases>
         <typeAlias alias="User" type="cn.stucar.model.User"/>
+        <typeAlias alias="UserCode" type="cn.stucar.model.UserCode"/>
     </typeAliases>
-
     <mappers>
         <mapper resource="mapping/UserMapper.xml"/>
     </mappers>

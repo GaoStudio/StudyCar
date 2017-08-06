@@ -4,6 +4,13 @@
 
 <mapper namespace="cn.stucar.dao.UserDao">
     <select id="selectUserByID" parameterType="int" resultType="User">
-        select * from `t_user` where  id = #{id}
+        select * from `user` where  user_id = #{id}
     </select>
+    <select id="queryUserCodeByPhone" parameterType="String" resultType="UserCode">
+        select * from `usercode` where  ucode_phone = #{phone}
+    </select>
+    <insert id="insertUserCode" useGeneratedKeys="true" keyProperty="ucode_code" parameterType="UserCode">
+        insert into usercode(ucode_phone,ucode_code)
+        values(#{ucode_phone},#{ucode_code})
+    </insert>
 </mapper>
