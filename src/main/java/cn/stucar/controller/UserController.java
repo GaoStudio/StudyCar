@@ -44,7 +44,7 @@ public class UserController extends BaseController{
         }
     }
     @RequestMapping(value = "/register")
-    public String register(MultipartFile logo,String phone,String name,String psw,String code)  {
+    public String register(MultipartFile logo,String phone,String name,String psw,String codee)  {
         return null;
     }
 }
