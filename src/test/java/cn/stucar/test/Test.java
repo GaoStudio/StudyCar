@@ -9,11 +9,12 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.junit.Before;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.Reader;
+
+import static com.sun.xml.internal.ws.dump.LoggingDumpTube.Position.Before;
 
 /**
  * Created by Administrator on 2017/8/3.
@@ -46,7 +47,7 @@ public class Test {
         }
     }
     ApplicationContext ctx=null;
-    @Before
+    @org.junit.Before
     public void TestBefore(){
         ctx=new ClassPathXmlApplicationContext("spring-mybatis.xml");
     }

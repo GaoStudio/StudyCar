@@ -7,4 +7,12 @@
     <!-- 自动扫描  @Controller-->
     <context:component-scan base-package="cn.stucar.controller"/>
     <mvc:annotation-driven />
+    <mvc:default-servlet-handler />
+
+    <mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/" />
+    <mvc:resources mapping="/webjars/**"
+                   location="classpath:/META-INF/resources/webjars/" />
+
+    <bean class="cn.stucar.utils.SwaggerConfig" />
+
 </beans>

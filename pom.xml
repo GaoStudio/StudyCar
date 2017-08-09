@@ -21,7 +21,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.10</version>
+      <version>4.0</version>
       <scope>test</scope>
     </dependency>
     <!-- spring核心包 -->
@@ -175,9 +175,20 @@
       <artifactId>commons-codec</artifactId>
       <version>1.9</version>
     </dependency>
-
+    <!-- swagger-springmvc -->
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger2</artifactId>
+      <version>2.7.0</version>
+    </dependency>
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger-ui</artifactId>
+      <version>2.7.0</version>
+    </dependency>
+    <!-- swagger-springmvc-end -->
   </dependencies>
   <build>
-    <finalName>FirstMaven</finalName>
+    <finalName>stucar</finalName>
   </build>
 </project>
