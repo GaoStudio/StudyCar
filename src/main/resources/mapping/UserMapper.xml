@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="cn.stucar.dao.UserDao">
-    <select id="selectUserByID" parameterType="int" resultType="User">
-        select * from `user` where  user_id = #{id}
+    <select id="selectUserByPhone" parameterType="String" resultType="User">
+        select * from `user` where  u_phone = #{id}
+    </select>
+    <select id="selectPswByPhone" parameterType="String" resultType="String">
+        select u_password from `user` where  u_phone = #{id}
     </select>
     <select id="queryUserCodeByPhone" parameterType="String" resultType="UserCode">
-        select * from `usercode` where  ucode_phone = #{phone}
+        select * from `usercode` where  ud_phone = #{phone} ORDER BY ud_time desc LIMIT 1
     </select>
     <insert id="insertUserCode" useGeneratedKeys="true" keyProperty="ucode_code" parameterType="UserCode">
-        insert into usercode(ucode_phone,ucode_code)
-        values(#{ucode_phone},#{ucode_code})
+        insert into usercode(ud_phone,ud_code)
+        values(#{ud_phone},#{ud_code})
+    </insert>
+    <insert id="insertUser" >
+        insert into user(u_phone,u_name,u_logo,u_password)
+        values(#{u_phone},#{u_name},#{u_logo},#{password})
     </insert>
 </mapper>

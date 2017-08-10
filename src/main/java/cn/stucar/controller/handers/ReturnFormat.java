@@ -1,6 +1,7 @@
 package cn.stucar.controller.handers;
 
 
+import cn.stucar.model.Data;
 import cn.stucar.model.OutputJson;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -35,9 +36,12 @@ public class ReturnFormat {
         messageMap.put("1014", "用户信息编辑失败");
         messageMap.put("1015", "用户信息失效，请重新获取");
     }
-
-    public static String retParam(int status, Object data) {
-        OutputJson OutputJson = new OutputJson(status,messageMap.get(String.valueOf(status)),data);
+    public static String retParam(int status, String message) {
+        OutputJson OutputJson = new OutputJson(status,message,new Data());
+        return gson.toJson(OutputJson);
+    }
+    public static String retParam(int status) {
+        OutputJson OutputJson = new OutputJson(status,messageMap.get(String.valueOf(status)),new Data());
         return gson.toJson(OutputJson);
     }
     public static String retParam(int status,String message, Object data) {

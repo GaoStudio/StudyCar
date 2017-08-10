@@ -34,8 +34,8 @@ public class RestExceptionHandler {
     @ExceptionHandler(RuntimeException.class)
     @ResponseBody
     public String runtimeExceptionHandler(RuntimeException runtimeException) {
-
-        return ReturnFormat.retParam(1000, null);
+        runtimeException.printStackTrace();
+        return ReturnFormat.retParam(1000);
     }
 
     //空指针异常
@@ -43,7 +43,7 @@ public class RestExceptionHandler {
     @ResponseBody
     public String nullPointerExceptionHandler(NullPointerException ex) {
         ex.printStackTrace();
-        return ReturnFormat.retParam(1001, null);
+        return ReturnFormat.retParam(1001);
     }
 
     //类型转换异常
@@ -51,7 +51,7 @@ public class RestExceptionHandler {
     @ResponseBody
     public String classCastExceptionHandler(ClassCastException ex) {
         ex.printStackTrace();
-        return ReturnFormat.retParam(1002, null);
+        return ReturnFormat.retParam(1002);
     }
 
     //IO异常
@@ -59,7 +59,7 @@ public class RestExceptionHandler {
     @ResponseBody
     public String iOExceptionHandler(IOException ex) {
         ex.printStackTrace();
-        return ReturnFormat.retParam(1003, null);
+        return ReturnFormat.retParam(1003);
     }
 
     //未知方法异常
@@ -67,7 +67,7 @@ public class RestExceptionHandler {
     @ResponseBody
     public String noSuchMethodExceptionHandler(NoSuchMethodException ex) {
         ex.printStackTrace();
-        return ReturnFormat.retParam(1004, null);
+        return ReturnFormat.retParam(1004);
     }
 
     //数组越界异常
@@ -75,7 +75,7 @@ public class RestExceptionHandler {
     @ResponseBody
     public String indexOutOfBoundsExceptionHandler(IndexOutOfBoundsException ex) {
         ex.printStackTrace();
-        return ReturnFormat.retParam(1005, null);
+        return ReturnFormat.retParam(1005);
     }
 
     //400错误
@@ -84,7 +84,7 @@ public class RestExceptionHandler {
     public String requestNotReadable(HttpMessageNotReadableException ex) {
         System.out.println("400..requestNotReadable");
         ex.printStackTrace();
-        return ReturnFormat.retParam(400, null);
+        return ReturnFormat.retParam(400);
     }
 
     //400错误
@@ -93,7 +93,7 @@ public class RestExceptionHandler {
     public String requestTypeMismatch(TypeMismatchException ex) {
         System.out.println("400..TypeMismatchException");
         ex.printStackTrace();
-        return ReturnFormat.retParam(400, null);
+        return ReturnFormat.retParam(400);
     }
 
     //400错误
@@ -102,7 +102,7 @@ public class RestExceptionHandler {
     public String requestMissingServletRequest(MissingServletRequestParameterException ex) {
         System.out.println("400..MissingServletRequest");
         ex.printStackTrace();
-        return ReturnFormat.retParam(400, null);
+        return ReturnFormat.retParam(400);
     }
 
     //405错误
@@ -110,7 +110,7 @@ public class RestExceptionHandler {
     @ResponseBody
     public String request405() {
         System.out.println("405...");
-        return ReturnFormat.retParam(405, null);
+        return ReturnFormat.retParam(405);
     }
 
     //406错误
@@ -118,7 +118,7 @@ public class RestExceptionHandler {
     @ResponseBody
     public String request406() {
         System.out.println("404...");
-        return ReturnFormat.retParam(406, null);
+        return ReturnFormat.retParam(406);
     }
 
     //500错误
@@ -126,6 +126,6 @@ public class RestExceptionHandler {
     @ResponseBody
     public String server500(RuntimeException runtimeException) {
         System.out.println("500...");
-        return ReturnFormat.retParam(406, null);
+        return ReturnFormat.retParam(406);
     }
 }

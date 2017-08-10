@@ -40,8 +40,8 @@ public class Test {
         SqlSession session = sqlSessionFactory.openSession();
         try {
             User user = (User) session.selectOne("cn.stucar.dao.UserDao.selectUserByID", 1);
-            System.out.println(user.getUser_name());
-            System.out.println(user.getUser_phone());
+           /* System.out.println(user.getUser_name());
+            System.out.println(user.getUser_phone());*/
         } finally {
             session.close();
         }
@@ -54,9 +54,9 @@ public class Test {
     @org.junit.Test
     public void SpringMyBatis(){
         UserDao userDao=(UserDao) ctx.getBean("userDao");
-        User user = userDao.selectUserByID(1);
+      /*  User user = userDao.selectUserByID(1);
         System.out.println(user.getUser_name());
-        System.out.println(user.getUser_phone());
+        System.out.println(user.getUser_phone());*/
     }
     @org.junit.Test
     public void LogTest() throws Exception {
