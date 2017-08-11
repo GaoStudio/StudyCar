@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
  * Created by Administrator on 2017/8/3.
  */
 public interface UserDao{
+    public User selectUserById(String id);
     public User selectUserByPhone(String id);
     public String selectPswByPhone(String id);
     public UserCode queryUserCodeByPhone(String phone);

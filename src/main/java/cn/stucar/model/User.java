@@ -9,16 +9,13 @@ public class User {
     private String u_phone;
     private String u_logo;
     private String u_sex;
-    public User(){
-
-    }
+    public User(){}
     public User(String u_name, String u_phone, String u_logo, String u_sex) {
         this.u_name = u_name;
         this.u_phone = u_phone;
         this.u_logo = u_logo;
         this.u_sex = u_sex;
     }
-
     public int getU_id() {
         return u_id;
     }

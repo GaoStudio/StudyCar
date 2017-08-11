@@ -15,16 +15,12 @@ import java.util.UUID;
 public class FileUpload {
     //文件上传
     public static String uploadImage(MultipartFile file, String fileName,String savePath) throws IOException {
-        if(fileName==null){
-            String uuid = UUID.randomUUID().toString().replaceAll("-","");
-            //获得文件类型（可以判断如果不是图片，禁止上传）
-            String contentType = file.getContentType();
-            //获得文件后缀名称
-            String imageName = contentType.substring(contentType.indexOf("/") + 1);
-            fileName = uuid+"."+imageName;
-        }
+        //获得文件类型（可以判断如果不是图片，禁止上传）
+        String contentType = file.getContentType();
+        //获得文件后缀名称
+        String imageName = contentType.substring(contentType.indexOf("/") + 1);
+        fileName = fileName+"."+imageName;
         File tempFile = new File(savePath, fileName);
-
         if (!tempFile.getParentFile().exists()) {
             tempFile.getParentFile().mkdir();
         }

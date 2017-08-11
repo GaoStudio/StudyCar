@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stucar.dao.CoachDao">
+    <insert id="insertCoach" >
+        insert into coach(u_id,ch_name,ch_phone,ch_card,ch_auth,car_id)
+        values(#{u_id},#{ch_name},#{ch_phone},#{ch_card},#{ch_auth},#{car_id})
+    </insert>
+</mapper>
