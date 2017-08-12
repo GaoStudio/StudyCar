@@ -6,6 +6,7 @@ import cn.stucar.model.Coach;
 import cn.stucar.model.User;
 import cn.stucar.services.CoachService;
 import cn.stucar.utils.FileUpload;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -15,6 +16,7 @@ import java.io.IOException;
 /**
  * Created by Administrator on 2017/8/11.
  */
+@Service
 public class CoachServiceImpl implements CoachService{
     @Resource
     public UserDao userDao;

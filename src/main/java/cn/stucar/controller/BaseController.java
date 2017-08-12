@@ -1,18 +1,19 @@
 package cn.stucar.controller;
 
 import cn.stucar.controller.handers.ReturnFormat;
+import cn.stucar.model.Result;
 
 /**
  * Created by Administrator on 2017/8/4.
  */
 public abstract  class BaseController {
-    protected String retContent(int status) {
+    protected Result retContent(int status) {
         return ReturnFormat.retParam(status);
     }
-    protected String retContent(int status,String message) {
+    protected Result retContent(int status, String message) {
         return ReturnFormat.retParam(status,message);
     }
-    protected String retContent(int status,String message,Object data) {
+    protected Result retContent(int status, String message, Object data) {
         return ReturnFormat.retParam(status, message,data);
     }
 }

@@ -5,8 +5,11 @@
     <typeAliases>
         <typeAlias alias="User" type="cn.stucar.model.User"/>
         <typeAlias alias="UserCode" type="cn.stucar.model.UserCode"/>
+        <typeAlias alias="School" type="cn.stucar.model.School"/>
     </typeAliases>
     <mappers>
         <mapper resource="mapping/UserMapper.xml"/>
+        <mapper resource="mapping/CoachMapper.xml"/>
+        <mapper resource="mapping/SchoolMapper.xml"/>
     </mappers>
 </configuration>

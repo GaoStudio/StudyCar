@@ -1,44 +1,36 @@
 package cn.stucar.controller;
 
-import cn.stucar.model.Data;
-import cn.stucar.model.OutputJson;
+import cn.stucar.model.Result;
 import cn.stucar.model.User;
 import cn.stucar.services.UserService;
-import cn.stucar.utils.FileUpload;
 import com.aliyuncs.exceptions.ClientException;
-import com.google.gson.Gson;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import springfox.documentation.annotations.ApiIgnore;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.POST;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by Administrator on 2017/8/3.
  */
-@Controller
+@RestController
 @RequestMapping(value = "/api/user", produces="application/json;charset=UTF-8")
 @ResponseBody
+@Api(description="用户基本操作")
 public class UserController extends BaseController{
     @Resource
     private UserService userService;
 
     @ApiOperation(value = "获取验证码",httpMethod = "POST",notes = "获取根据ID用户信息")
-    @ApiResponse(code = 200, message = "success", response = OutputJson.class)
+    @ApiResponse(code = 200, message = "success", response = Result.class)
     @RequestMapping(value = "/code",method = RequestMethod.POST)
-    public String getCode(@ApiParam(name = "phone",type = "String", required = true, value = "用户手机号码") @RequestParam("phone")  String phone)  {
+    public Result getCode(@ApiParam(name = "phone",type = "String", required = true, value = "用户手机号码") @RequestParam("phone")  String phone)  {
         int  result = -1;
         try {
             System.out.println(phone);
@@ -59,7 +51,7 @@ public class UserController extends BaseController{
 
     @ApiOperation(value = "用户注册",httpMethod = "POST",notes = "用户注册接口")
     @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public String register(HttpServletRequest request ,MultipartFile logo, String phone, String name, String psw, String codee)  {
+    public Result register(HttpServletRequest request , MultipartFile logo, String phone, String name, String psw, String codee)  {
         String saveFilePath = "images/userlogo/defaultlogo.jpg";
         if(logo!=null){
             //获得文件类型（可以判断如果不是图片，禁止上传）
@@ -84,9 +76,9 @@ public class UserController extends BaseController{
     }
 
     @ApiOperation(value = "用户登录",httpMethod = "POST",notes = "用户登录接口")
-    @ApiResponse(code = 200, message = "success", response = OutputJson.class)
+    @ApiResponse(code = 200, message = "success", response = Result.class)
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public String login(String phone,String psw){
+    public Result login(String phone, String psw){
         //System.out.println(phone+":::"+psw);
         Object Object = userService.login(phone,psw);
         if(Object instanceof User){
